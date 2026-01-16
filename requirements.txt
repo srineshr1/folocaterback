@@ -1,6 +1,6 @@
 fastapi
 uvicorn
 motor
-google-generativeai
+google-genai
 python-dotenv
 pydantic
