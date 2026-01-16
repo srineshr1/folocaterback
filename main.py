@@ -26,7 +26,7 @@ db = client["ChatApp"]
 messages_col = db["messages"]
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-2.5-flash")
+model = genai.GenerativeModel("gemini-2.5-flash-lite")
 
 class ChatRequest(BaseModel):
     username: str
@@ -68,7 +68,7 @@ async def chat(request: ChatRequest):
         # THIS WILL PRINT THE ACTUAL ERROR TO YOUR RENDER LOGS
         print(f"CRITICAL ERROR: {str(e)}") 
         raise HTTPException(status_code=500, detail=str(e))
-        
+
 @app.get("/history/{username}")
 async def get_history(username: str):
     # Find messages for this user, newest first
