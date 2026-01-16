@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: gemini-mongodb-backend
+    runtime: python
+    plan: free
+    region: oregon # or your preferred region
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: MONGO_URI
+        sync: false # Set this in the Render Dashboard for security
+      - key: GEMINI_API_KEY
+        sync: false # Set this in the Render Dashboard for security
+      - key: PYTHON_VERSION
+        value: 3.11.0
